@@ -18,43 +18,41 @@ public class HandBehavior : MonoBehaviour
 
     void Update()
     {
+        HashSet<InputNames> inp = Main.State.ActiveInputs;
+
         if (which_hand == Hands.Left)
         {
-            if (Main.State.ActiveInputs.Contains(InputNames.lh_left))
+            if (Main.State.PlayerView == PlayerView.LookingForward)
             {
-                transform.position += Vector3.left * (hand_speed * Time.deltaTime);
-            }
-            if (Main.State.ActiveInputs.Contains(InputNames.lh_right))
+                if (inp.Contains(InputNames.lh_left)) { transform.position += Vector3.left * (hand_speed * Time.deltaTime); }
+                if (inp.Contains(InputNames.lh_right)) { transform.position += Vector3.right * (hand_speed * Time.deltaTime); }
+                if (inp.Contains(InputNames.lh_up)) { transform.position += Vector3.up * (hand_speed * Time.deltaTime); }
+                if (inp.Contains(InputNames.lh_down)) { transform.position += Vector3.down * (hand_speed * Time.deltaTime); }
+            } 
+            else if (Main.State.PlayerView == PlayerView.LookingDown)
             {
-                transform.position += Vector3.right * (hand_speed * Time.deltaTime);
-            }
-            if (Main.State.ActiveInputs.Contains(InputNames.lh_up))
-            {
-                transform.position += Vector3.up * (hand_speed * Time.deltaTime);
-            }
-            if (Main.State.ActiveInputs.Contains(InputNames.lh_down))
-            {
-                transform.position += Vector3.down * (hand_speed * Time.deltaTime);
+                if (inp.Contains(InputNames.lh_left)) { transform.position += Vector3.left * (hand_speed * Time.deltaTime); }
+                if (inp.Contains(InputNames.lh_right)) { transform.position += Vector3.right * (hand_speed * Time.deltaTime); }
+                if (inp.Contains(InputNames.lh_up)) { transform.position += Vector3.forward * (hand_speed * Time.deltaTime); }
+                if (inp.Contains(InputNames.lh_down)) { transform.position += Vector3.back * (hand_speed * Time.deltaTime); }
             }
         }
 
         if (which_hand == Hands.Right)
         {
-            if (Main.State.ActiveInputs.Contains(InputNames.rh_left))
+            if (Main.State.PlayerView == PlayerView.LookingForward)
             {
-                transform.position += Vector3.left * (hand_speed * Time.deltaTime);
-            }
-            if (Main.State.ActiveInputs.Contains(InputNames.rh_right))
+                if (inp.Contains(InputNames.rh_left)) { transform.position += Vector3.left * (hand_speed * Time.deltaTime); }
+                if (inp.Contains(InputNames.rh_right)) { transform.position += Vector3.right * (hand_speed * Time.deltaTime); }
+                if (inp.Contains(InputNames.rh_up)) { transform.position += Vector3.up * (hand_speed * Time.deltaTime); }
+                if (inp.Contains(InputNames.rh_down)) { transform.position += Vector3.down * (hand_speed * Time.deltaTime); }
+            } 
+            else if (Main.State.PlayerView == PlayerView.LookingDown)
             {
-                transform.position += Vector3.right * (hand_speed * Time.deltaTime);
-            }
-            if (Main.State.ActiveInputs.Contains(InputNames.rh_up))
-            {
-                transform.position += Vector3.up * (hand_speed * Time.deltaTime);
-            }
-            if (Main.State.ActiveInputs.Contains(InputNames.rh_down))
-            {
-                transform.position += Vector3.down * (hand_speed * Time.deltaTime);
+                if (inp.Contains(InputNames.rh_left)) { transform.position += Vector3.left * (hand_speed * Time.deltaTime); }
+                if (inp.Contains(InputNames.rh_right)) { transform.position += Vector3.right * (hand_speed * Time.deltaTime); }
+                if (inp.Contains(InputNames.rh_up)) { transform.position += Vector3.forward * (hand_speed * Time.deltaTime); }
+                if (inp.Contains(InputNames.rh_down)) { transform.position += Vector3.back * (hand_speed * Time.deltaTime); }
             }
         }
     }
