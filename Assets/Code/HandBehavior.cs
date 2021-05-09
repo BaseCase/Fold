@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -55,5 +56,10 @@ public class HandBehavior : MonoBehaviour
                 if (inp.Contains(InputNames.rh_down)) { transform.position += Vector3.back * (hand_speed * Time.deltaTime); }
             }
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log($"BONK! hand hit {other.name}.");
     }
 }
