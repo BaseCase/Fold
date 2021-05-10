@@ -58,8 +58,28 @@ public class HandBehavior : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        Debug.Log($"BONK! hand hit {other.name}.");
+        // this isn't happening right now b/c we've removed the colliders from the laundry
+        if (other.gameObject.CompareTag("Laundry"))
+        {
+            Debug.Log("bonked the towel!");
+            other
+                .gameObject
+                .GetComponent<FoldableBehavior>()
+                .AddTouchingHand(this.gameObject, which_hand);
+        }
+    }
+
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.CompareTag("Laundry"))
+        {
+            Debug.Log("moving off the towel");
+            other
+                .gameObject
+                .GetComponent<FoldableBehavior>()
+                .RemoveTouchingHand(which_hand);
+        }
     }
 }

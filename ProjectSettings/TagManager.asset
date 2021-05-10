@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - GlobalMain
+  - Laundry
   layers:
   - Default
   - TransparentFX
