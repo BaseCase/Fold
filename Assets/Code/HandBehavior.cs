@@ -12,11 +12,11 @@ public class HandBehavior : MonoBehaviour
 {
     [SerializeField] public Hands which_hand;
     [SerializeField] public float hand_speed;
+    [SerializeField] public float gripped_scale;
+    [SerializeField] public float ungripped_scale;
     
-    void Start()
-    {
-    }
-
+    void Start() { }
+    
     void Update()
     {
         HashSet<InputNames> inp = Main.State.ActiveInputs;
@@ -37,6 +37,15 @@ public class HandBehavior : MonoBehaviour
                 if (inp.Contains(InputNames.lh_up)) { transform.position += Vector3.forward * (hand_speed * Time.deltaTime); }
                 if (inp.Contains(InputNames.lh_down)) { transform.position += Vector3.back * (hand_speed * Time.deltaTime); }
             }
+
+            if (inp.Contains(InputNames.lh_grip))
+            {
+                transform.localScale = new Vector3(gripped_scale, gripped_scale, gripped_scale);
+            }
+            else
+            {
+                transform.localScale = new Vector3(ungripped_scale, ungripped_scale, ungripped_scale);
+            }
         }
 
         if (which_hand == Hands.Right)
@@ -54,6 +63,15 @@ public class HandBehavior : MonoBehaviour
                 if (inp.Contains(InputNames.rh_right)) { transform.position += Vector3.right * (hand_speed * Time.deltaTime); }
                 if (inp.Contains(InputNames.rh_up)) { transform.position += Vector3.forward * (hand_speed * Time.deltaTime); }
                 if (inp.Contains(InputNames.rh_down)) { transform.position += Vector3.back * (hand_speed * Time.deltaTime); }
+            }
+            
+            if (inp.Contains(InputNames.rh_grip))
+            {
+                transform.localScale = new Vector3(gripped_scale, gripped_scale, gripped_scale);
+            }
+            else
+            {
+                transform.localScale = new Vector3(ungripped_scale, ungripped_scale, ungripped_scale);
             }
         }
     }
