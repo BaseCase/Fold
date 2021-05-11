@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | Know When to Fold 'Em</title>
+  </head>
+  <body>
+    <style>
+      #controls {
+        float: left;
+        margin-top: 5rem;
+      }
+
+      #controls th, #controls td {
+        padding: 0.2rem;
+        border-bottom: 1px solid #ddd;
+      }
+
+      #explanation {
+        font-family: sans-serif;
+        text-align: left;
+        font-size: 16px;
+        line-height: 1.5;
+        padding-bottom: 5rem;
+      }
+      #explanation p {
+        max-width: 40rem;
+      }
+      .signature {
+        color: #666;
+        margin-left: 30rem;
+      }
+    </style>
+    <canvas id="unity-canvas" width=1024 height=768 style="width: 1024px; height: 768px; background: #231F20"></canvas>
+    <script src="Build/build.loader.js"></script>
+    <script>
+      createUnityInstance(document.querySelector("#unity-canvas"), {
+        dataUrl: "Build/build.data",
+        frameworkUrl: "Build/build.framework.js",
+        codeUrl: "Build/build.wasm",
+        streamingAssetsUrl: "StreamingAssets",
+        companyName: "Base Case Studios",
+        productName: "Know When to Fold 'Em",
+        productVersion: "0.1",
+        // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
+        // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
+      });
+    </script>
+
+    <table id="controls">
+      <thead>
+        <tr><th>key</th><th>action</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>W A S D</td><td>Move left hand</td></tr>
+        <tr><td>Arrow Keys</td><td>Move right hand</td></tr>
+        <tr><td>Left Shift</td><td>Left hand grip</td></tr>
+        <tr><td>Right Shift</td><td>Right hand grip</td></tr>
+        <tr><td>X</td><td>Toggle view</td></tr>
+      </tbody>
+    </table>
+
+    <div id="explanation">
+      <h1>Know When to Fold 'Em (prototype)</h1>
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/MXuam0-uLdw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <p>This is a prototype I made for the final project of Concept Development at Madison College, Spring 2021. The goal was to concept an educational game. I (thanks to one of many fabulous suggestions from <a href="https://twitter.com/pjiutzi">Paul</a>) chose to build a game that teaches the player how to fold various pieces of laundry.</p>
+      <h3>As you can see, it is far from complete!</h3>
+      <p>I started the project with almost no Unity (the game engine used here) experience, having only made one 2D game jam game in it a few years ago, so getting up to speed on making a 3D Unity game took some time. I also have no Blender experience, so making the few very simple models you see here took quite a while. Also, the cloth simulation module that ships with Unity does not do a few crucial things that I was banking on it doing! Sooooo, this is a very, very rough prototype.</p>
+      <p>All that said, I think it was a good learning experience, and I think if you watch the embedded video here you can get something of a sense of what the complete game might look like. I doubt I will continue working on this after turning in the assignment, but who knows! If I get a strong response that it deserves getting turned into a real game, I'll think about it.</p>
+      <p class="signature">-Casey, May 2021</p>
+    </div>
+  </body>
+</html>
